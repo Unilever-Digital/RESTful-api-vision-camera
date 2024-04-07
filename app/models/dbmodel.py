@@ -6,7 +6,10 @@ class counterBottle(db.Model):
     _id = db.Column(db.Integer, primary_key=True)
     datetime = db.Column(db.String(100), nullable=False)
     line = db.Column(db.Text, nullable=False)
-    fgscode = db.Columns()
+    fgscode = db.Columns(db.Text, nullable=False)
+    product_description = db.Columns(db.Text, nullable=False)
+    bottle_target = db.Columns(db.Integer, nullable=False)
+    bottle_result = db.Columns(db.Integer, nullable=False)
     
 
     def __repr__(self):
@@ -16,5 +19,6 @@ class barcodeBottle(db.Model):
     # ID	DateTime	Line	SKUID	ProductName	Barcode	Status	Reject
     _id = db.Column(db.Integer, primary_key=True)
     datetime = db.Column(db.String(100),nullable=False)
+    
     
     
