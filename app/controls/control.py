@@ -25,6 +25,18 @@ def noSqlTransform(table):
             json_row.append({" ".join(["feature", index2]): row[index2]})
         json_string.append(json_row)
 
-        
+def tableSqlServerFetch(conn, table_name):
+    """_summary_
+    """
+    try:
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        rows = cursor.fetchall()
+        return rows
+    except Exception as e:
+        print(e)
+
+    
+    
         
         

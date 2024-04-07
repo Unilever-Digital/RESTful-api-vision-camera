@@ -2,16 +2,24 @@ from flask import (
     Flask,
     Blueprint,
     render_template,
-    request
+    request,
+    jsonify
 )
+from app.models.dbmodel import *
+from app.controls.control import *
+
 
 
 blog = Blueprint("blog", __name__)
 
 
-@blog.route("/home",  methods=["POST", "GET"])
+@blog.route("/qltdata",  methods=["POST", "GET"])
 def home():
-    return render_template("blog/home.html")
+    if request.method == "POST":
+        type = request.values()
+        conn = connectToSqlServer("localhost", "quality", "sa", "1")
+        data = tableSqlServerFetch(conn, type)
+        return jsonify(noSqlTransform(data))
 
 
 @blog.route("/user", methods=["POST", "GET"])

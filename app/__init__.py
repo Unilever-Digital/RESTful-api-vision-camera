@@ -48,6 +48,6 @@ def create_app(test_config=None):
     # a base page
     @app.route('/')
     def main():
-        return redirect(url_for('auth.home'))
+        return redirect(url_for('blog.qltdata'))
 
     return app
