@@ -13,13 +13,23 @@ from app.controls.control import *
 blog = Blueprint("blog", __name__)
 
 
-@blog.route("/qltdata",  methods=["POST", "GET"])
-def home():
+@blog.route("/qltdata/carton",  methods=["POST", "GET"])
+def qltdata_carton():
     if request.method == "POST":
         type = request.values()
-        conn = connectToSqlServer("localhost", "quality", "sa", "1")
-        data = tableSqlServerFetch(conn, type)
+        conn = connectToSqlServer("localhost", "quality", "sa", "Password1")
+        data = tableSqlServerFetch(conn, "carton")
         return jsonify(noSqlTransform(data))
+    
+
+@blog.route("/qltdata/couterbottle",  methods=["POST", "GET"])
+def qltdata_counter_bottle():
+    if request.method == "POST":
+        type = request.values()
+        conn = connectToSqlServer("localhost", "quality", "sa", "Password1")
+        data = tableSqlServerFetch(conn, "Counter_Bottle")
+        return jsonify(noSqlTransform(data))
+
 
 
 @blog.route("/user", methods=["POST", "GET"])
