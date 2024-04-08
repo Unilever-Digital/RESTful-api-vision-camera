@@ -55,7 +55,7 @@ def qltdata_carton_bi():
     
     # Fetch data from MongoDB and transform to JSON
     json_data = tableMongoDBFetch(collection)
-    return json_data
+    return jsonify(json_data)
 
 
 @blog.route("/qltdata/counter-botton-bi",  methods=["POST", "GET"])
@@ -65,7 +65,7 @@ def qltdata_counter_bottles_bi():
 
     # Fetch data from MongoDB and transform to JSON
     json_data = tableMongoDBFetch(collection)
-    return json_data
+    return jsonify(json_data)
 
 
 @blog.route("/qltdata/cap=bi",  methods=["POST", "GET"])
@@ -75,7 +75,7 @@ def qltdata_cap_bi():
 
     # Fetch data from MongoDB and transform to JSON
     json_data = tableMongoDBFetch(collection)
-    return json_data
+    return jsonify(json_data)
 
 
 @blog.route("/user", methods=["POST", "GET"])
