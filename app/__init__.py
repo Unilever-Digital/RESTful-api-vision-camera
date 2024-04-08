@@ -44,6 +44,6 @@ def create_app(test_config=None):
     # a base page
     @app.route('/')
     def main():
-        return redirect(url_for('blog.qltdata_carton'))
+        return redirect(url_for('blog.qltdata_carton_bi'))
 
     return app
