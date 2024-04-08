@@ -13,9 +13,6 @@ class counterBottle(db.Model):
     bottle_result = db.Column(db.Integer, nullable=False)
     status = db.Column(db.String(100), nullable=False)
     reject = db.Column(db.String(100), nullable=True)
-    
-    def __repr__(self):
-        return f"Post(title='{self.title}', content='{self.content}')"
 
 class carton(db.Model):
     # ID	DateTime	Line	SKUID	ProductName	Barcode	Status	Reject

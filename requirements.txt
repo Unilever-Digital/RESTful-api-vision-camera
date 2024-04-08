@@ -1,5 +1,4 @@
 flask
-flask-caching
 flask_sqlalchemy
 pymssql
 pandas
@@ -7,3 +6,4 @@ numpy
 pyodbc
 openpyxl
 pymongo
+gunicorn
