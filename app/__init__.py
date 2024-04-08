@@ -20,25 +20,21 @@ def create_app(test_config=None):
         app : Flask app
     """
     app = Flask(__name__, instance_relative_config=True)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
-    db = SQLAlchemy(app)
-    db.create_all()
- 
-    from .views.view import blog
-    app.register_blueprint(blog)
-
+    
     if test_config is None:
         # load the instance config, if it exists, when not testing
         app.config.from_pyfile('config.py', silent=True)
-        app.config.from_mapping(SECRET_KEY='unilever_digital',
-                                DATABASE=os.path.join(
-                                app.instance_path, 'flaskr.sqlite'),
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+        app.config.from_mapping(SECRET_KEY='unilever',
                                 CACHE_TYPE='FileSystemCache',
                                 CACHE_DIR='cache',
                                 CACHE_THRESHOLD=100000,)
     else:
         app.config.from_mapping(test_config)
-
+    from .views.view import blog
+    app.register_blueprint(blog)
+    from .models.dbmodel import db
+    db.init_app(app)
     # ensure the instance folder exists
     try:
         os.makedirs(app.instance_path)
@@ -48,6 +44,6 @@ def create_app(test_config=None):
     # a base page
     @app.route('/')
     def main():
-        return redirect(url_for('blog.qltdata'))
+        return redirect(url_for('blog.qltdata_carton'))
 
     return app

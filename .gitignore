@@ -3,3 +3,4 @@
 .__pycache__
 .pycache
 .cache
+.DS_Store

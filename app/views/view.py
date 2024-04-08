@@ -15,20 +15,19 @@ blog = Blueprint("blog", __name__)
 
 @blog.route("/qltdata/carton",  methods=["POST", "GET"])
 def qltdata_carton():
-    if request.method == "POST":
-        type = request.values()
-        conn = connectToSqlServer("localhost", "quality", "sa", "Password1")
-        data = tableSqlServerFetch(conn, "carton")
-        return jsonify(noSqlTransform(data))
+    if request.method == "GET":
+        conn = connectToSqlServer("localhost","Vision_Mas140", "sa", "Password.1")
+        data = tableSqlServerFetch(conn, "Table_ResultCarton")
+        return jsonify(data)
     
 
 @blog.route("/qltdata/couterbottle",  methods=["POST", "GET"])
 def qltdata_counter_bottle():
-    if request.method == "POST":
+    if request.method == "GET":
         type = request.values()
-        conn = connectToSqlServer("localhost", "quality", "sa", "Password1")
+        conn = connectToSqlServer("localhost","Vision_Mas140", "sa", "Password.1")
         data = tableSqlServerFetch(conn, "Counter_Bottle")
-        return jsonify(noSqlTransform(data))
+        return jsonify(data)
 
 
 
