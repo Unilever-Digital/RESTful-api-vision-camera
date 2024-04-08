@@ -1,14 +1,10 @@
 from flask import (
     Flask,
-    session,
     url_for,
-    render_template,
-    Blueprint,
     redirect,
     request
 )
 import os
-from flask_sqlalchemy import SQLAlchemy
 
 def create_app(test_config=None):
     """ app init
