@@ -4,3 +4,9 @@
 .pycache
 .cache
 .DS_Store
+
+/.env/
+/.venv/
+/.__pycache__/
+/.pycache/
+/.cache/
