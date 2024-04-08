@@ -114,6 +114,44 @@ def tableMongoDBFetch(collection, query=None, projection=None):
     except Exception as e:
         print(e)
         raise
+    
+
+def tableMongoDBFetch_100data(collection, query=None, projection=None):
+    """
+    Fetch 100 rows of data from a MongoDB collection and convert it to JSON format.
+
+    Args:
+        collection (pymongo.collection.Collection): Collection object from which to fetch data.
+        query (dict): Query to filter documents (optional).
+        projection (dict): Projection to include/exclude fields in the result (optional).
+
+    Returns:
+        str: JSON representation of the fetched data.
+
+    Raises:
+        Exception: If an error occurs during the execution.
+    """
+    try:
+        # Fetch documents from the collection
+        if query is None:
+            query = {}
+        if projection is None:
+            projection = {}
+
+        cursor = collection.find(query, projection).limit(
+            100)  # Limit to 100 rows
+        rows = list(cursor)
+
+        # Remove _id field from each document
+        for doc in rows:
+            doc.pop('_id', None)
+
+        # Convert the list of dictionaries to JSON
+        return json.dumps(rows)
+    except Exception as e:
+        print(e)
+        raise
+
 
     
     

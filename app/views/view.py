@@ -12,7 +12,7 @@ blog = Blueprint("blog", __name__)
 
 @blog.route("/qltdata/carton",  methods=["POST", "GET"])
 def qltdata_carton():
-    if request.method == "GET":
+    if request.method == "POST":
         conn = connectToSqlServer("localhost","Vision_Mas140", "sa", "Password.1")
         data = tableSqlServerFetch(conn, "Table_ResultCarton", columns = ["ID"
             ,"DateTime"
@@ -27,7 +27,7 @@ def qltdata_carton():
 
 @blog.route("/qltdata/couterbottle",  methods=["POST", "GET"])
 def qltdata_counter_bottle():
-    if request.method == "GET":
+    if request.method == "POST":
         conn = connectToSqlServer("localhost","Vision_Mas140", "sa", "Password.1")
         data = tableSqlServerFetch(conn, "Table_ResultCounterBottles",columns = ["DateTime"
             ,"Line"
@@ -39,7 +39,7 @@ def qltdata_counter_bottle():
         
 @blog.route("/qltdata/cap",  methods=["POST", "GET"])
 def qltdata_cap():
-    if request.method == "GET":
+    if request.method == "POST":
         conn = connectToSqlServer("localhost","Vision_Mas140", "sa", "Password.1")
         data = tableSqlServerFetch(conn, "Table_ResultCap",columns = ["DateTime"
             ,"Line"
@@ -50,32 +50,56 @@ def qltdata_cap():
 
 @blog.route("/qltdata/carton-bi",  methods=["POST", "GET"])
 def qltdata_carton_bi():
-    mongo_conn = connectToMongoDB( database="Vision_Mas140")
-    collection = mongo_conn["Table_ResultCarton"]
-    
-    # Fetch data from MongoDB and transform to JSON
-    json_data = tableMongoDBFetch(collection)
-    return jsonify(json_data)
+    if request.method == "POST":
+        mongo_conn = connectToMongoDB( database="Vision_Mas140")
+        collection = mongo_conn["Table_ResultCarton"]
+        
+        # Fetch data from MongoDB and transform to JSON
+        json_data = tableMongoDBFetch(collection)
+        return jsonify(json_data)
+    elif request.method =="GET":
+        mongo_conn = connectToMongoDB(database="Vision_Mas140")
+        collection = mongo_conn["Table_ResultCarton"]
+
+        # Fetch data from MongoDB and transform to JSON
+        json_data = tableMongoDBFetch_100data(collection)
+        return jsonify(json_data)
 
 
 @blog.route("/qltdata/counter-botton-bi",  methods=["POST", "GET"])
 def qltdata_counter_bottles_bi():
-    mongo_conn = connectToMongoDB(database="Vision_Mas140")
-    collection = mongo_conn["Table_ResultCounterBottles"]
+    if request.method == "POST":
+        mongo_conn = connectToMongoDB(database="Vision_Mas140")
+        collection = mongo_conn["Table_ResultCounterBottles"]
 
-    # Fetch data from MongoDB and transform to JSON
-    json_data = tableMongoDBFetch(collection)
-    return jsonify(json_data)
+        # Fetch data from MongoDB and transform to JSON
+        json_data = tableMongoDBFetch(collection)
+        return jsonify(json_data)
+    elif request.method =="GET":
+        mongo_conn = connectToMongoDB(database="Vision_Mas140")
+        collection = mongo_conn["Table_ResultCounterBottles"]
+
+        # Fetch data from MongoDB and transform to JSON
+        json_data = tableMongoDBFetch_100data(collection)
+        return jsonify(json_data)
 
 
 @blog.route("/qltdata/cap=bi",  methods=["POST", "GET"])
 def qltdata_cap_bi():
-    mongo_conn = connectToMongoDB(database="Vision_Mas140")
-    collection = mongo_conn["Table_ResultCap"]
+    if request.method == "POST":
+        mongo_conn = connectToMongoDB(database="Vision_Mas140")
+        collection = mongo_conn["Table_ResultCap"]
 
-    # Fetch data from MongoDB and transform to JSON
-    json_data = tableMongoDBFetch(collection)
-    return jsonify(json_data)
+        # Fetch data from MongoDB and transform to JSON
+        json_data = tableMongoDBFetch(collection)
+        return jsonify(json_data)
+    elif request.method =="GET":
+        mongo_conn = connectToMongoDB(database="Vision_Mas140")
+        collection = mongo_conn["Table_ResultCap"]
+
+        # Fetch data from MongoDB and transform to JSON
+        json_data = tableMongoDBFetch_100data(collection)
+        return jsonify(json_data)
 
 
 @blog.route("/user", methods=["POST", "GET"])
