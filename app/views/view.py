@@ -56,14 +56,14 @@ def qltdata_carton_bi():
         
         # Fetch data from MongoDB and transform to JSON
         json_data = tableMongoDBFetch(collection)
-        return jsonify({"quality-carton":json_data})
+        return json_data
     elif request.method =="GET":
         mongo_conn = connectToMongoDB(database="Vision_Mas140")
         collection = mongo_conn["Table_ResultCarton"]
 
         # Fetch data from MongoDB and transform to JSON
         json_data = tableMongoDBFetch_100data(collection)
-        return jsonify({"quality-carton": json_data})
+        return json_data
 
 
 @blog.route("/qltdata/counter-bottles-bi",  methods=["POST", "GET"])
