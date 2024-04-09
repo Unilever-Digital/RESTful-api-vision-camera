@@ -46,40 +46,6 @@ def noSqlTransform(rows):
         print(e)
 
 
-def tableSqlServerFetch(conn, table_name, columns):
-    """
-    Fetch data from a SQL Server table and convert it to JSON format.
-
-    Args:
-        conn (connection): Connection object to the SQL Server database.
-        table_name (str): Name of the table from which to fetch data.
-        columns (list): List of column names in the table.
-
-    Returns:
-        str: JSON representation of the fetched data.
-
-    Raises:
-        Exception: If an error occurs during the execution.
-    """
-    try:
-        cursor = conn.cursor()
-        cursor.execute(f"SELECT * FROM {table_name}")
-        rows = cursor.fetchall()
-
-        # Convert rows to a list of dictionaries
-        results = []
-        for row in rows:
-            result_dict = {col: str(value).strip()
-                           for col, value in zip(columns, row)}
-            results.append(result_dict)
-
-        # Convert the list of dictionaries to JSON
-        return json.dumps(results)
-    except Exception as e:
-        print(e)
-        raise
-
-
 def tableMongoDBFetch(collection, query=None, projection=None):
     """
     Fetch data from a MongoDB collection and convert it to JSON format.
@@ -110,11 +76,11 @@ def tableMongoDBFetch(collection, query=None, projection=None):
             doc.pop('_id', None)
 
         # Convert the list of dictionaries to JSON
-        return json.dumps(rows)
+        return rows
     except Exception as e:
         print(e)
         raise
-    
+
 
 def tableMongoDBFetch_100data(collection, query=None, projection=None):
     """
@@ -147,13 +113,9 @@ def tableMongoDBFetch_100data(collection, query=None, projection=None):
             doc.pop('_id', None)
 
         # Convert the list of dictionaries to JSON
-        return json.dumps(rows)
+        return rows
     except Exception as e:
         print(e)
         raise
 
 
-    
-    
-        
-        
