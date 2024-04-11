@@ -67,7 +67,7 @@ def qltdata_carton_bi():
 
 
 @blog.route("/qltdata/carton-bi-json",  methods=["POST", "GET"])
-def qltdata_carton_bi():
+def qltdata_carton_bi_json():
     if request.method == "POST":
         mongo_conn = connectToMongoDB(database="Vision_Mas140")
         collection = mongo_conn["Table_ResultCarton"]
