@@ -41,7 +41,7 @@ def fetchCursorDatabase(collection, query=None, projection=None):
 
     Returns:
         str: JSON representation of the fetched data.
-
+        
     Raises:
         Exception: If an error occurs during the execution.
     """
@@ -50,13 +50,11 @@ def fetchCursorDatabase(collection, query=None, projection=None):
             query = {}
         if projection is None:
             projection = {}
+            
         cursor = collection.find(query, projection)
         rows = list(cursor)
-        # Remove _id field from each document
         for doc in rows:
             doc.pop('_id', None)
-
-        # Convert the list of dictionaries to JSON
         return rows
     except Exception as e:
         print(e)
