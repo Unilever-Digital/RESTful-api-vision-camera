@@ -11,7 +11,6 @@ def connectionDatabase(database):
         print("Error connecting to MongoDB:", e)
         return None
 
-
 def noSqlTransform(rows):
     """tranform Sql table to tree Node json
 
@@ -31,7 +30,7 @@ def noSqlTransform(rows):
         print(e)
 
 
-def tableMongoDBFetch(collection, query=None, projection=None):
+def fetchCursorDatabase(collection, query=None, projection=None):
     """
     Fetch data from a MongoDB collection and convert it to JSON format.
 
@@ -47,15 +46,12 @@ def tableMongoDBFetch(collection, query=None, projection=None):
         Exception: If an error occurs during the execution.
     """
     try:
-        # Fetch documents from the collection
         if query is None:
             query = {}
         if projection is None:
             projection = {}
-
         cursor = collection.find(query, projection)
         rows = list(cursor)
-
         # Remove _id field from each document
         for doc in rows:
             doc.pop('_id', None)
