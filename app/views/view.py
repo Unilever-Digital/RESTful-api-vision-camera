@@ -1,89 +1,28 @@
-from flask import (
-    Blueprint,
-    render_template,
-    request,
-    jsonify
-)
+from flask import Blueprint,
 from app.models.dbmodel import *
 from app.controls.control import *
 
 blog = Blueprint("blog", __name__)
 
 
-@blog.route("/qltdata/carton",  methods=["POST", "GET"])
-def qltdata_carton():
-    if request.method == "POST":
-        conn = connectToSqlServer("localhost","Vision_Mas140", "sa", "Password.1")
-        data = tableSqlServerFetch(conn, "Table_ResultCarton", columns = ["ID"
-            ,"DateTime"
-            ,"Line"
-            ,"SKUID"
-            ,"ProductName"
-            ,"Barcode"
-            ,"Status"
-            ,"Reject"])
-        return jsonify(data)
-    
-
-@blog.route("/qltdata/couterbottle",  methods=["POST", "GET"])
-def qltdata_counter_bottle():
-    if request.method == "POST":
-        conn = connectToSqlServer("localhost","Vision_Mas140", "sa", "Password.1")
-        data = tableSqlServerFetch(conn, "Table_ResultCounterBottles",columns = ["DateTime"
-            ,"Line"
-            ,"FGsCode"
-            ,"ProductName"
-            ,"Result"
-            ,"Status"])
-        return jsonify(data)
-        
-@blog.route("/qltdata/cap",  methods=["POST", "GET"])
-def qltdata_cap():
-    if request.method == "POST":
-        conn = connectToSqlServer("localhost","Vision_Mas140", "sa", "Password.1")
-        data = tableSqlServerFetch(conn, "Table_ResultCap",columns = ["DateTime"
-            ,"Line"
-            ,"FGsCode"
-            ,"ProductName"
-            ,"Status"])
-        return jsonify(data= data)
-
-@blog.route("/qltdata/carton-bi",  methods=["POST", "GET"])
+@blog.route("vision/pcl/mas140/carton",  methods=["POST", "GET"])
 def qltdata_carton_bi():
-    if request.method == "POST":
-        mongo_conn = connectToMongoDB( database="Vision_Mas140")
-        collection = mongo_conn["Table_ResultCarton"]
-        
-        # Fetch data from MongoDB and transform to JSON
-        json_data = tableMongoDBFetch(collection)
-        return json.dumps(json_data)
-    elif request.method =="GET":
-        mongo_conn = connectToMongoDB(database="Vision_Mas140")
-        collection = mongo_conn["Table_ResultCarton"]
+    cursor = connectionDatabase( database="Vision_Mas140")
+    collection = cursor["Table_ResultCarton"]
+    json_data = connectionDatabase(collection)
+    return json.dumps(json_data)
 
-        # Fetch data from MongoDB and transform to JSON
-        json_data = tableMongoDBFetch_100data(collection)
-        return json.dumps(json_data)
+@blog.route("vision/pcl/mas140/cap",  methods=["POST", "GET"])
+def qltdata_carton_bi():
+    cursor = connectionDatabase(database="Vision_Mas140")
+    collection = cursor["Table_ResultCap"]
+    json_data = connectionDatabase(collection)
+    return json.dumps(json_data)
 
+@blog.route("vision/pcl/mas140/counter",  methods=["POST", "GET"])
+def qltdata_carton_bi():
+    cursor = connectionDatabase(database="Vision_Mas140")
+    collection = cursor["Table_ResultCounterOfBottles"]
+    json_data = connectionDatabase(collection)
+    return json.dumps(json_data)
 
-@blog.route("/qltdata/carton-bi-json",  methods=["POST", "GET"])
-def qltdata_carton_bi_json():
-    if request.method == "POST":
-        mongo_conn = connectToMongoDB(database="Vision_Mas140")
-        collection = mongo_conn["Table_ResultCarton"]
-
-        # Fetch data from MongoDB and transform to JSON
-        json_data = tableMongoDBFetch(collection)
-        return jsonify(json_data)
-    elif request.method == "GET":
-        mongo_conn = connectToMongoDB(database="Vision_Mas140")
-        collection = mongo_conn["Table_ResultCarton"]
-
-        # Fetch data from MongoDB and transform to JSON
-        json_data = tableMongoDBFetch_100data(collection)
-        return jsonify(json_data)
-
-
-@blog.route("/user", methods=["POST", "GET"])
-def user():
-    return render_template("blog/user.html")
