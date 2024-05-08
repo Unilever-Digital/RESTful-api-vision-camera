@@ -5,25 +5,138 @@ import json
 
 blog = Blueprint("blog", __name__)
 
-
 @blog.route("/vision/pcl/mas140/carton", methods=["POST", "GET"])
 def vision_pcl_mas140_carton():
-    cursor = connectionDatabase("Vision_Mas140")
-    collection = cursor["Table_ResultCarton"]
-    json_data = fetchCursorDatabase(collection)
-    return json_data
+    """_summary_
+
+    Returns:
+        _json_: _root data json of mas140 carton vision cam bi_
+    """
+    try:
+        cursor = connectionDatabase("Vision_Mas140")
+        collection = cursor["Table_ResultCarton"]
+        json_data = fetchCursorDatabase(collection)
+        return json_data
+    except Exception as e:
+        return e
 
 @blog.route("/vision/pcl/mas140/cap", methods=["POST", "GET"])
 def vision_pcl_mas140_cap():
-    cursor = connectionDatabase("Vision_Mas140")
-    collection = cursor["Table_ResultCap"]
-    json_data = fetchCursorDatabase(collection)
-    return json_data
+    """_summary_
+
+    Returns:
+        _json_: _root data json of mas140 cap vision cam bi_
+    """
+    try:
+        cursor = connectionDatabase("Vision_Mas140")
+        collection = cursor["Table_ResultCap"]
+        json_data = fetchCursorDatabase(collection)
+        return json_data
+    except Exception as e:
+        return e
 
 @blog.route("/vision/pcl/mas140/counter", methods=["POST", "GET"])
 def vision_pcl_mas140_counter():
-    cursor = connectionDatabase("Vision_Mas140")
-    collection = cursor["Table_ResultCounterBottles"]
-    json_data = fetchCursorDatabase(collection)
-    return json_data
+    """_summary_
 
+    Returns:
+        _json_: _root data json of mas140 counter vision cam bi_
+    """
+    try:
+        cursor = connectionDatabase("Vision_Mas140")
+        collection = cursor["Table_ResultCounterBottles"]
+        json_data = fetchCursorDatabase(collection)
+        return json_data
+    except Exception as e:
+        return e
+
+@blog.route("/vision/hcl/stn/barcode", methods=["POST", "GET"])
+def vision_hcl_stn_barcode():
+    """_summary_
+
+    Returns:
+        _json_: _root data json of mas140 counter vision cam bi_
+    """
+    try:    
+        cursor = connectionDatabase("Stn")
+        collection = cursor["Table_ImageFail_Barcode"]
+        json_data = fetchCursorDatabase(collection)
+        return json_data
+    except Exception as e:
+        return e
+
+@blog.route("/vision/hcl/stn/cap1", methods=["POST", "GET"])
+def vision_hcl_stn_cap1():
+    """_summary_
+
+    Returns:
+        _json_: _root data json of mas140 counter vision cam bi_
+    """
+    try:    
+        cursor = connectionDatabase("Stn")
+        collection = cursor["Table_ImageFail_Cap1"]
+        json_data = fetchCursorDatabase(collection)
+        return json_data
+    except Exception as e:
+        return e
+
+@blog.route("/vision/hcl/stn/cap2", methods=["POST", "GET"])
+def vision_hcl_stn_cap2():
+    """_summary_
+
+    Returns:
+        _json_: _root data json of mas140 counter vision cam bi_
+    """
+    try:    
+        cursor = connectionDatabase("Stn")
+        collection = cursor["Table_ImageFail_Cap2"]
+        json_data = fetchCursorDatabase(collection)
+        return json_data
+    except Exception as e:
+        return e
+
+@blog.route("/vision/hcl/stn/datecode", methods=["POST", "GET"])
+def vision_hcl_stn_datecode():
+    """_summary_
+
+    Returns:
+        _json_: _root data json of mas140 counter vision cam bi_
+    """
+    try:    
+        cursor = connectionDatabase("Stn")
+        collection = cursor["Table_ImageFail_DateCode"]
+        json_data = fetchCursorDatabase(collection)
+        return json_data
+    except Exception as e:
+        return e
+    
+@blog.route("/vision/hcl/stn/lo1", methods=["POST", "GET"])
+def vision_hcl_stn_lo1():
+    """_summary_
+
+    Returns:
+        _json_: _root data json of mas140 counter vision cam bi_
+    """
+    try:    
+        cursor = connectionDatabase("Stn")
+        collection = cursor["Table_ImageFail_LO1"]
+        json_data = fetchCursorDatabase(collection)
+        return json_data
+    except Exception as e:
+        return e
+    
+@blog.route("/vision/hcl/stn/lo2", methods=["POST", "GET"])
+def vision_hcl_stn_lo2():
+    """_summary_
+
+    Returns:
+        _json_: _root data json of mas140 counter vision cam bi_
+    """
+    try:    
+        cursor = connectionDatabase("Stn")
+        collection = cursor["Table_ImageFail_LO2"]
+        json_data = fetchCursorDatabase(collection)
+        return json_data
+    except Exception as e:
+        return e
+    

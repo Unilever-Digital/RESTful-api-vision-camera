@@ -29,7 +29,6 @@ def noSqlTransform(rows):
     except Exception as e:
         print(e)
 
-
 def fetchCursorDatabase(collection, query=None, projection=None):
     """
     Fetch data from a MongoDB collection and convert it to JSON format.
@@ -59,5 +58,3 @@ def fetchCursorDatabase(collection, query=None, projection=None):
     except Exception as e:
         print(e)
         raise
-
-
