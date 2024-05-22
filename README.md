@@ -15,7 +15,7 @@ Connection API QLT (Quality, Load, and Throughput) is a RESTful API designed to 
 ## Installation
 1. Clone the repository:
 
-   git clone https://github.com/yourusername/connection-api-qlt.git
+   git clone https://github.com/yourusername/app-restfulapi-vision-camera.git
 
 2. Install dependencies:
      //
