@@ -4,7 +4,7 @@ from app.controls.control import *
 
 blog = Blueprint("blog", __name__)
 
-#PCL
+#PCL vision camera restful api
 
 #mas140
 @blog.route("/vision/pcl/mas140/carton")
@@ -143,7 +143,7 @@ def vision_hcl_stn_lo2():
         return e
 
 
-#HCL
+#HCL vision cameara restfulapi
 
 #Po2
 @blog.route("/vision/hcl/po2/imagefail", methods=["POST", "GET"])
@@ -175,7 +175,6 @@ def vision_hcl_po2_checkweight():
         return json_data
     except Exception as e:
         return e
-    
 
 @blog.route("/vision/hcl/po2/dataman", methods=["POST", "GET"])
 def vision_hcl_po2_dataman():
@@ -192,7 +191,6 @@ def vision_hcl_po2_dataman():
     except Exception as e:
         return e
     
-
 @blog.route("/vision/hcl/po2/carton", methods=["POST", "GET"])
 def vision_hcl_po2_carton():
     """_summary_
