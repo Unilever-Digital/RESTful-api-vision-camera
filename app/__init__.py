@@ -1,8 +1,7 @@
 from flask import (
     Flask,
     url_for,
-    redirect,
-    request
+    redirect
 )
 import os
 
@@ -38,7 +37,7 @@ def create_app(test_config=None):
         pass
 
     # a base page
-    @app.route('/')
+    @app.route('/home')
     def main():
         return redirect(url_for('blog.qltdata_carton_bi'))
 
