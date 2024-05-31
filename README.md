@@ -27,6 +27,8 @@ Authentication is required to access the API endpoints. Include the authenticati
 
 ## Contributors
 - [Le Chon Minh Dat](https://github.com/lcmd65)
+- [Nguyen Minh Hieu]
+- [...]
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
