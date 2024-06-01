@@ -61,7 +61,7 @@ Authentication is required to access the API endpoints. Include the authenticati
 
 ## Contributors
 - [Le Chon Minh Dat](https://github.com/lcmd65)
-- [Nguyen Minh Hieu] (https://github.com/BanhBao)
+- [Nguyen Minh Hieu](https://github.com/BanhBaoa)
 - [...]
 
 ## License
