@@ -5,7 +5,7 @@ from app.controls.control import *
 blog = Blueprint("blog", __name__)
 
 #PCL vision camera restfulapi-----------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------
 #mas140
 @blog.route("/vision/pcl/mas140/carton")
 def vision_pcl_mas140_carton():
@@ -53,7 +53,7 @@ def vision_pcl_mas140_counter():
         return e
 
 #HCL vision cameara restfulapi ---------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------
 #line Po2
 @blog.route("/vision/hcl/po2/imagefail", methods=["POST", "GET"])
 def vision_hcl_po2_imagefail():
@@ -124,7 +124,7 @@ def vision_hcl_stn_barcode():
         _json_: _root data json of mas140 counter vision cam bi_
     """
     try:    
-        cursor = connectionDatabase("Stn")
+        cursor = connectionDatabase("U-CheckDate-Barcode-Stn")
         collection = cursor["Table_ImageFail_Barcode"]
         json_data = fetchCursorDatabase(collection)
         return json_data
@@ -139,7 +139,7 @@ def vision_hcl_stn_cap1():
         _json_: _root data json of mas140 counter vision cam bi_
     """
     try:    
-        cursor = connectionDatabase("Stn")
+        cursor = connectionDatabase("U-CheckDate-Barcode-Stn")
         collection = cursor["Table_ImageFail_Cap1"]
         json_data = fetchCursorDatabase(collection)
         return json_data
@@ -154,7 +154,7 @@ def vision_hcl_stn_cap2():
         _json_: _root data json of mas140 counter vision cam bi_
     """
     try:    
-        cursor = connectionDatabase("Stn")
+        cursor = connectionDatabase("U-CheckDate-Barcode-Stn")
         collection = cursor["Table_ImageFail_Cap2"]
         json_data = fetchCursorDatabase(collection)
         return json_data
@@ -169,7 +169,7 @@ def vision_hcl_stn_datecode():
         _json_: _root data json of mas140 counter vision cam bi_
     """
     try:    
-        cursor = connectionDatabase("Stn")
+        cursor = connectionDatabase("U-CheckDate-Barcode-Stn")
         collection = cursor["Table_ImageFail_DateCode"]
         json_data = fetchCursorDatabase(collection)
         return json_data
@@ -184,7 +184,7 @@ def vision_hcl_stn_lo1():
         _json_: _root data json of mas140 counter vision cam bi_
     """
     try:    
-        cursor = connectionDatabase("Stn")
+        cursor = connectionDatabase("U-CheckDate-Barcode-Stn")
         collection = cursor["Table_ImageFail_LO1"]
         json_data = fetchCursorDatabase(collection)
         return json_data
@@ -199,7 +199,7 @@ def vision_hcl_stn_lo2():
         _json_: _root data json of mas140 counter vision cam STN LO2_
     """
     try:    
-        cursor = connectionDatabase("Stn")
+        cursor = connectionDatabase("U-CheckDate-Barcode-Stn")
         collection = cursor["Table_ImageFail_LO2"]
         json_data = fetchCursorDatabase(collection)
         return json_data
