@@ -7,7 +7,6 @@ import os
 
 def create_app(test_config=None):
     """ app init
-
     Args:
         test_config (_type_, optional): _description_. Defaults to None.
 

@@ -54,11 +54,10 @@ def vision_pcl_mas140_counter():
 
 #HCL vision cameara restfulapi ---------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------------------
-#line Po2
-@blog.route("/vision/hcl/po2/imagefail", methods=["POST", "GET"])
+# line pouch
+@blog.route("/vision/hcl/pouch/imagefail", methods=["POST", "GET"])
 def vision_hcl_po2_imagefail():
     """_summary_
-
     Returns:
         _json_: _root data json of mas140 counter vision cam STN LO2_
     """
@@ -70,7 +69,7 @@ def vision_hcl_po2_imagefail():
     except Exception as e:
         return e
     
-@blog.route("/vision/hcl/po2/checkweight", methods=["POST", "GET"])
+@blog.route("/vision/hcl/pouch/checkweight", methods=["POST", "GET"])
 def vision_hcl_po2_checkweight():
     """_summary_
 
@@ -85,7 +84,7 @@ def vision_hcl_po2_checkweight():
     except Exception as e:
         return e
 
-@blog.route("/vision/hcl/po2/dataman", methods=["POST", "GET"])
+@blog.route("/vision/hcl/pouch/dataman", methods=["POST", "GET"])
 def vision_hcl_po2_dataman():
     """_summary_
 
@@ -100,7 +99,7 @@ def vision_hcl_po2_dataman():
     except Exception as e:
         return e
     
-@blog.route("/vision/hcl/po2/carton", methods=["POST", "GET"])
+@blog.route("/vision/hcl/pouch/carton", methods=["POST", "GET"])
 def vision_hcl_po2_carton():
     """_summary_
 
@@ -115,7 +114,7 @@ def vision_hcl_po2_carton():
     except Exception as e:
         return e
 
-#line stn
+#line sangtaonew
 @blog.route("/vision/hcl/stn/barcode", methods=["POST", "GET"])
 def vision_hcl_stn_barcode():
     """_summary_
@@ -205,3 +204,6 @@ def vision_hcl_stn_lo2():
         return json_data
     except Exception as e:
         return e
+
+
+## line posimate 2

@@ -1,33 +1,82 @@
-import pandas as pd
-import pyodbc
+import pytest
+from app import create_app
 
-if __name__ == "__main__":
-    # Read Excel data into a DataFrame
-    column_names = ['ID', 'DateTime', 'Line', 'SKUID', 'ProductName', 'Barcode', 'Status', 'Reject']
+app = create_app()
 
-    # Read Excel data into a DataFrame with specified column names
-    excel_file = 'data.xlsx'
-    df = pd.read_excel(excel_file, names=column_names)
-    connection = pyodbc.connect(driver="ODBC Driver 17 for SQL Server",
-        server='localhost',
-        database='Vision_Mas140',
-        uid='sa',  # Replace with your username
-        pwd='Password.1',  # Replace with your password
-        port=1433)   
-    cursor = connection.cursor()
-    for index, row in df.iterrows():
-        # Construct the SQL INSERT statement
-        sql = "INSERT INTO Table_ResultCarton (ID, DateTime, Line, SKUID, ProductName, Barcode, Status, Reject) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-        values = (str(row['ID']), row['DateTime'], row['Line'], str(row['SKUID']),
-              row['ProductName'], str(row['Barcode']), row['Status'], row['Reject'])
-        print(values)
+@pytest.fixture
+def client():
+    with app.test_client() as client:
+        with app.app_context():
+            yield client
 
-        # Execute the SQL statement
-        cursor.execute(sql, values)
 
-    # Commit the transaction (save changes to the database)
-    connection.commit()
+# Index link test connection
+def test_pcl_mas140_carton(client):
+    response = client.get('/vision/pcl/mas140/carton')
+    html_data = response.data.decode('utf-8')
+    return html_data
 
-    # Close the cursor and connection
-    cursor.close()
-    connection.close()
+def test_pcl_mas140_cap(client):
+    response = client.get('/vision/pcl/mas140/cap')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_pcl_mas140_counter(client):
+    response = client.get('/vision/pcl/mas140/counter')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_pouch_imagefail(client):
+    response = client.get('/vision/hcl/pouch/imagefail')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_pouch_checkweight(client):
+    response = client.get('/vision/hcl/pouch/checkweight')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_pouch_dataman(client):
+    response = client.get('/vision/hcl/pouch/dataman')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_pouch_carton(client):
+    response = client.get('/vision/hcl/pouch/carton')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_stn_barcode(client):
+    response = client.get('/vision/hcl/stn/barcode')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_stn_barcode(client):
+    response = client.get('/vision/hcl/stn/barcode')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_stn_cap1(client):
+    response = client.get('/vision/hcl/stn/cap1')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_stn_cap2(client):
+    response = client.get('/vision/hcl/stn/cap2')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_stn_lo1(client):
+    response = client.get('/vision/hcl/stn/lo1')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_stn_lo2(client):
+    response = client.get('/vision/hcl/stn/lo2')
+    html_data = response.data.decode('utf-8')
+    return html_data
+
+def test_hcl_stn_datecode(client):
+    response = client.get('/vision/hcl/stn/datecode')
+    html_data = response.data.decode('utf-8')
+    return html_data

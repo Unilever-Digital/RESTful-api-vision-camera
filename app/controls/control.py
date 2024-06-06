@@ -13,7 +13,6 @@ def connectionDatabase(database):
 
 def noSqlTransform(rows):
     """tranform Sql table to tree Node json
-
     Args:
         table (dataframe)): sql table
     """

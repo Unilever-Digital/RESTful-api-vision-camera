@@ -7,3 +7,5 @@ pyodbc
 openpyxl
 pymongo
 gunicorn
+pytest
+pylint
