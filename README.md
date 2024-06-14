@@ -1,13 +1,4 @@
-## Overview
 Connection API QLT (Quality, Load, and Throughput) is a RESTful API designed to provide insights into the quality, load, and throughput of network connections. It offers a set of endpoints to query and analyze various metrics related to network connections, aiding in monitoring and optimizing network performance.
-
-## Features
-- **Quality Monitoring**: Assess the quality of network connections based on metrics such as latency, jitter, and packet loss.
-- **Load Analysis**: Analyze the load on network connections, including bandwidth usage and congestion levels.
-- **Throughput Evaluation**: Measure the throughput of connections to ensure optimal data transfer rates.
-- **RESTful API**: Utilizes REST architecture for easy integration and usage.
-- **Scalable**: Built to handle large-scale networks and high volumes of requests.
-- **Secure**: Implements authentication and authorization mechanisms to ensure data privacy and integrity.
 
 ## Technical stack:
    - Flask
@@ -21,9 +12,15 @@ Connection API QLT (Quality, Load, and Throughput) is a RESTful API designed to 
    git clone https://github.com/Unilever-Digital/app-restfulapi-vision-camera.git
 
 2. Install dependencies:
-     //
 
-4. Access the API endpoints at `http://localhost:8080` by default.
+      pip install -r requirements.txt
+
+3. Local runing:
+
+      python main.py
+      
+
+5. Access the API endpoints at `http://localhost:8080` by default.
 
 ## Source
 ```
