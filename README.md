@@ -9,15 +9,15 @@ Connection API QLT (Quality, Load, and Throughput) is a RESTful API designed to 
 ## Installation
 1. Clone the repository:
 
-   git clone https://github.com/Unilever-Digital/app-restfulapi-vision-camera.git
+         git clone https://github.com/Unilever-Digital/app-restfulapi-vision-camera.git
 
 2. Install dependencies:
 
-      pip install -r requirements.txt
+         pip install -r requirements.txt
 
 3. Local runing:
 
-      python main.py
+         python main.py
       
 
 5. Access the API endpoints at `http://localhost:8080` by default.
